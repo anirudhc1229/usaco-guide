@@ -108,9 +108,6 @@ public class FencePlan {
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
-#define endl '\n'
-typedef long long ll;
-typedef pair<int, int> pii;
 
 struct Cow {
     int x;
@@ -133,11 +130,14 @@ void dfs(int cur) {
 }
 
 int main() {
-
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
     ifstream fin("fenceplan.in");
     ofstream fout("fenceplan.out");
+
+    fin >> N >> M;
+    cows.resize(N);
+    for (Cow& c : cows) {
+    	fin >> c.x >> c.y;
+    	c.visited = false;
 
     // get input
     fin >> N >> M;
@@ -161,7 +161,7 @@ int main() {
         networks.push_back(net);
     }
 
-    // find minimum perimeter among all networks
+    // find min perimeter among all networks
     int ans = INT32_MAX;
     for (vector<int> net : networks) {
         int minX = 1e8, maxX = 0, minY = 1e8, maxY = 0;
@@ -176,7 +176,6 @@ int main() {
 
     fout << ans << endl;
     return 0;
-
 }
 ```
 
